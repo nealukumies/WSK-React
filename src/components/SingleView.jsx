@@ -10,7 +10,7 @@ const SingleView = (props) => {
             <img src={item.filename} alt={item.title} />
           )}
           <h3>Title: {item.title}</h3>
-          <p>Description: {item.description}</p>
+          <p>{item.description}</p>
           <button onClick={() => setSelectedItem(null)}>Close</button>
         </dialog>
       )}
