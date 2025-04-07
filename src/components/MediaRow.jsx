@@ -17,15 +17,7 @@ const MediaRow = (props) => {
 };
 
 MediaRow.propTypes = {
-  item: PropTypes.shape({
-    media_id: PropTypes.number.isRequired,
-    thumbnail: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    created_at: PropTypes.string.isRequired,
-    filesize: PropTypes.number.isRequired,
-    media_type: PropTypes.string.isRequired,
-  }).isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 export default MediaRow;
