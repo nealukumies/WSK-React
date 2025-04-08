@@ -1,9 +1,12 @@
 import React from 'react';
+import {Link, Outlet} from 'react-router';
 
 export const Layout = () => {
   return (
     <>
-      >
+      <header>
+        <h1>Nea´s App</h1>
+      </header>
       <div>
         <nav>
           <ul>

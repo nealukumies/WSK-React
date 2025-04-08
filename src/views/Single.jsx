@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useLocation} from 'react-router';
 
 const Single = (props) => {
-  return <div>Single</div>;
+  const {state} = useLocation();
+  const item = state.item;
+  return <></>;
 };
 
 Single.propTypes = {};
