@@ -20,7 +20,7 @@ const Home = () => {
     };
     getMedia();
   }, []);
-  //Reactin toimintojen takia päivitetty media array vasta tässä:
+  //Reactin toimintojen takia päivitetty media array vasta tässä seuraavassa console logissa:
   console.log('Media array pääohjelmassa', mediaArray);
   return (
     <>
