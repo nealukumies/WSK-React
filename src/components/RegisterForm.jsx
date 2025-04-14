@@ -1,20 +1,19 @@
-import {useNavigate} from 'react-router';
 import {useUser} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
 
 const RegisterForm = () => {
   const {postUser} = useUser();
-  const navigate = useNavigate();
+
   const initValues = {
     username: '',
     password: '',
+    email: '',
   };
 
   const doRegister = async () => {
     console.log('Register funktiota kutsuttu');
     console.log(inputs);
     await postUser(inputs);
-    navigate('/profile');
   };
 
   const {inputs, handleInputChange, handleSubmit} = useForm(
