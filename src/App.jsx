@@ -8,6 +8,7 @@ import Upload from './views/Upload';
 import Single from './views/Single';
 import Login from './views/Login';
 import Logout from './views/Logout';
+import Register from './views/Register';
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
           <Route path="/upload" element={<Upload />} />
           <Route path="/single" element={<Single />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
         </Route>
       </Routes>

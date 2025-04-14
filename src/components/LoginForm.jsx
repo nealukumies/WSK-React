@@ -14,7 +14,6 @@ const LoginForm = () => {
   const doLogin = async () => {
     console.log('Login funktiota kutsuttu');
     console.log(inputs);
-    // TODO: add login functionalities here
     await postLogin(inputs);
     navigate('/');
   };
