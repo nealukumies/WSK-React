@@ -1,6 +1,6 @@
 import {createContext, useState} from 'react';
 import {useAuthentication, useUser} from '../hooks/apiHooks';
-import {useNavigate} from 'react-router';
+import {useLocation, useNavigate} from 'react-router';
 
 const UserContext = createContext(null);
 
@@ -9,6 +9,7 @@ const UserProvider = ({children}) => {
   const {postLogin} = useAuthentication();
   const {getUserByToken} = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // login, logout and autologin functions are here instead of components
   const handleLogin = async (credentials) => {
@@ -39,22 +40,15 @@ const UserProvider = ({children}) => {
   // handleAutoLogin is used when the app is loaded to check if there is a valid token in local storage
   const handleAutoLogin = async () => {
     try {
-      console.log('AutoLogin funktiota kutsuttu');
-      const token = window.localStorage.getItem('token');
-      if (!token) {
-        return;
+      const token = localStorage.getItem('token');
+      if (token) {
+        const userResult = await getUserByToken(token);
+        setUser(userResult.user);
+        // when page is refreshed, the user is redirected to origin (see ProtectedRoute.jsx)
+        const origin = location.pathname || '/';
+        navigate(origin);
       }
-      const userResult = await getUserByToken(token);
-      console.log('userResult: ', userResult);
-      if (!userResult) {
-        return;
-      }
-      setUser(userResult);
-      console.log('User: ' + userResult);
-      navigate('/');
     } catch (e) {
-      //if token not valid
-      handleLogout();
       console.log(e.message);
     }
   };
