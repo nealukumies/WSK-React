@@ -49,7 +49,7 @@ const useAuthentication = () => {
       fetchOptions,
     );
     console.log('loginresult', loginResult);
-    window.localStorage.setItem('token', loginResult.token);
+
     return loginResult;
   };
 
