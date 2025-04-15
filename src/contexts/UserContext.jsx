@@ -21,7 +21,7 @@ const UserProvider = ({children}) => {
       console.log('User: ' + loginResult.user);
       setUser(loginResult.user);
     } catch (e) {
-      console.log(e.message);
+      throw new Error(e.message);
     }
   };
 
@@ -53,6 +53,8 @@ const UserProvider = ({children}) => {
       console.log('User: ' + userResult);
       navigate('/');
     } catch (e) {
+      //if token not valid
+      handleLogout();
       console.log(e.message);
     }
   };
