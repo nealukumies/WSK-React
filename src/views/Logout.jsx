@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import {useUserContext} from '../hooks/contextHooks';
 
 const Logout = () => {
