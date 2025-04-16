@@ -2,8 +2,10 @@ import {useState} from 'react';
 import useForm from '../hooks/formHooks';
 import {useFile} from '../hooks/apiHooks';
 import {useMedia} from '../hooks/apiHooks';
+import {useNavigate} from 'react-router';
 
 const Upload = () => {
+  const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const {postFile} = useFile();
   const {postMedia} = useMedia();
@@ -14,6 +16,7 @@ const Upload = () => {
       console.log('File upload result:', fileResult);
       const mediaResult = await postMedia(fileResult.data, inputs, token);
       console.log('Media result: ' + mediaResult);
+      navigate('/');
     } catch (e) {
       console.log(e.message);
     }
