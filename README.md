@@ -2,4 +2,4 @@
 
 WebSovellusKehitys - React 1
 
-Open [here](https://users.metropolia.fi/~neal/WSK/context/) to view it in the browser.
+Open [here](https://users.metropolia.fi/~neal/WSK/upload/) to view it in the browser.
