@@ -31,7 +31,8 @@ const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="loginuser">Username</label>
-          <input
+          <TextInput
+            label="username"
             name="username"
             type="text"
             id="loginuser"
@@ -41,7 +42,8 @@ const LoginForm = () => {
         </div>
         <div>
           <label htmlFor="loginpassword">Password</label>
-          <input
+          <TextInput
+            la
             name="password"
             type="password"
             id="loginpassword"

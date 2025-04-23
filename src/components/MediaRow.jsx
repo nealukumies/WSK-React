@@ -8,9 +8,13 @@ const MediaRow = (props) => {
   //   setSelectedItem(item);
   // }
   return (
-    <tr key={item.media_id}>
+    <tr className="*:border-2 *:border-sky-700 *:p-4" key={item.media_id}>
       <td>
-        <img src={item.thumbnail} alt={item.title} />
+        <img
+          src={item.thumbnail}
+          alt={item.title}
+          className="h-52 object-cover"
+        />
       </td>
       <td>{item.title}</td>
       <td>{item.description}</td>
@@ -20,7 +24,7 @@ const MediaRow = (props) => {
       <td>{item.media_type}</td>
       {/*<td><button onClick={handleClick}>View</button></td>*/}
       <td>
-        <Link to="/single" state={{item}}>
+        <Link className="p-4 hover:bg-sky-700" to="/single" state={{item}}>
           View
         </Link>
       </td>
