@@ -2,23 +2,25 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import {useUserContext} from '../hooks/contextHooks';
 import {useMedia} from '../hooks/apiHooks';
+import EditMediaModal from './EditMediaModal';
+import {useState} from 'react';
 
 const MediaRow = (props) => {
   const {item} = props;
-
   // const {item, setSelectedItem} = props;
   // function handleClick() {
   //   setSelectedItem(item);
   // }
   // const {deleteMedia, modifyMedia} = useMedia;
   const {user} = useUserContext();
-  const {deleteMedia} = useMedia();
+  const {deleteMedia, modifyMedia} = useMedia();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentItem, setCurrentItem] = useState(item);
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('token');
       await deleteMedia(item.media_id, token);
       alert('Media deleted');
-      // Optionally: refresh or update the list
     } catch (error) {
       console.error('Failed to delete media:', error);
       alert('Failed to delete media');
