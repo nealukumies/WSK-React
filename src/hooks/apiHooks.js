@@ -1,6 +1,5 @@
 import {fetchData} from '../utils/fetchData';
-import {useEffect, useState} from 'react';
-
+import {useState} from 'react';
 const mediaApiUrl = import.meta.env.VITE_MEDIA_API;
 
 const useMedia = () => {
@@ -10,8 +9,6 @@ const useMedia = () => {
     try {
       const mediaData = await fetchData(`${mediaApiUrl}/media`);
 
-      setMediaArray(mediaData);
-
       const authApiUrl = import.meta.env.VITE_AUTH_API;
       const newData = await Promise.all(
         mediaData.map(async (item) => {
@@ -20,17 +17,12 @@ const useMedia = () => {
         }),
       );
 
-      console.log('Media array: ', mediaArray);
       console.log('new data', newData);
       setMediaArray(newData);
     } catch (error) {
       console.log('Error: ', error);
     }
   };
-
-  useEffect(() => {
-    getMedia();
-  }, []);
 
   const postMedia = async (file, inputs, token) => {
     const data = {
@@ -50,7 +42,32 @@ const useMedia = () => {
     return mediaResult;
   };
 
-  return {mediaArray, postMedia};
+  const modifyMedia = async (inputs, token) => {
+    const fetchOptions = {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer: ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(inputs),
+    };
+
+    return await fetchData(`${mediaApiUrl}/media/${inputs.id}`, fetchOptions);
+  };
+
+  const deleteMedia = async (id, token) => {
+    const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer: ${token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    return await fetchData(`${mediaApiUrl}/media/${id}`, fetchOptions);
+  };
+
+  return {getMedia, mediaArray, postMedia, deleteMedia, modifyMedia};
 };
 
 const useAuthentication = () => {

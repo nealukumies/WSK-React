@@ -1,5 +1,6 @@
 import {useUser} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
+import TextInput from './ui/TextInput';
 
 const RegisterForm = () => {
   const {postUser} = useUser();
@@ -11,7 +12,7 @@ const RegisterForm = () => {
   };
 
   const doRegister = async () => {
-    console.log('Register funktiota kutsuttu');
+    console.log('Register function triggered');
     console.log(inputs);
     await postUser(inputs);
   };
@@ -21,45 +22,52 @@ const RegisterForm = () => {
     initValues,
   );
 
-  console.log(inputs);
-
   return (
-    <>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="registeruser">Username</label>
-          <input
-            name="username"
-            type="text"
-            id="loginuser"
-            onChange={handleInputChange}
-            autoComplete="username"
-          />
-        </div>
-        <div>
-          <label htmlFor="registeremail">Email</label>
-          <input
-            name="email"
-            type="email"
-            id="registeremail"
-            onChange={handleInputChange}
-            autoComplete="email"
-          />
-        </div>
-        <div>
-          <label htmlFor="registerpassword">Password</label>
-          <input
-            name="password"
-            type="password"
-            id="registerpassword"
-            onChange={handleInputChange}
-            autoComplete="current-password"
-          />
-        </div>
-        <button type="submit">Register</button>
+    <div className="flex min-h-screen items-center justify-center bg-sky-900">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md rounded-lg bg-sky-500 p-6 shadow-md"
+      >
+        <h1 className="mb-6 text-center text-2xl font-bold">Register</h1>
+
+        <TextInput
+          label="Username"
+          name="username"
+          type="text"
+          id="registeruser"
+          value={inputs.username}
+          onChange={handleInputChange}
+          autoComplete="username"
+        />
+
+        <TextInput
+          label="Email"
+          name="email"
+          type="email"
+          id="registeremail"
+          value={inputs.email}
+          onChange={handleInputChange}
+          autoComplete="email"
+        />
+
+        <TextInput
+          label="Password"
+          name="password"
+          type="password"
+          id="registerpassword"
+          value={inputs.password}
+          onChange={handleInputChange}
+          autoComplete="current-password"
+        />
+
+        <button
+          type="submit"
+          className="mt-4 w-full rounded bg-blue-500 py-2 text-white hover:bg-blue-600"
+        >
+          Register
+        </button>
       </form>
-    </>
+    </div>
   );
 };
 

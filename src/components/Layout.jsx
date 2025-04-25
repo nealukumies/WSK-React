@@ -10,29 +10,54 @@ export const Layout = () => {
   return (
     <>
       <header>
-        <h1>Nea´s App</h1>
+        <h1 className="m-4 text-3xl font-bold">Nea´s App</h1>
       </header>
       <div>
-        <nav>
-          <ul>
+        <nav className="mb-4">
+          <ul className="flex justify-end overflow-hidden bg-sky-900 p-2">
             <li>
-              <Link to="/">Home</Link>
+              <Link
+                className="block bg-sky-900 p-4 text-center text-sky-50 hover:bg-sky-700"
+                to="/"
+              >
+                Home
+              </Link>
             </li>
             {user ? (
               <>
                 <li>
-                  <Link to="/profile">Profile</Link>
+                  <Link
+                    className="block bg-sky-900 p-4 text-center text-sky-50 hover:bg-sky-700"
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/upload">Upload</Link>
+                  <Link
+                    className="block bg-sky-900 p-4 text-center text-sky-50 hover:bg-sky-700"
+                    to="/upload"
+                  >
+                    Upload
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/logout">Logout</Link>
+                  <Link
+                    className="block bg-sky-900 p-4 text-center text-sky-50 hover:bg-sky-700"
+                    to="/logout"
+                  >
+                    Logout
+                  </Link>
                 </li>
               </>
             ) : (
               <li>
-                <Link to="/login">Login</Link>
+                <Link
+                  className="block bg-sky-700 p-4 text-center text-sky-50 hover:bg-sky-700"
+                  to="/login"
+                >
+                  Login
+                </Link>
               </li>
             )}
           </ul>

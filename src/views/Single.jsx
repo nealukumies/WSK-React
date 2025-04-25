@@ -11,9 +11,9 @@ const Single = () => {
     <>
       {' '}
       {item.media_type.includes('video') ? (
-        <video src={item.filename} controls />
+        <video src={item.filename} controls className="w-11/12" />
       ) : (
-        <img src={item.filename} alt={item.title} />
+        <img src={item.filename} alt={item.title} className="w-11/12" />
       )}
       <h3>Title: {item.title}</h3>
       <p>{item.description}</p>
