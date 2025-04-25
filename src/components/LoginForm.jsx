@@ -1,7 +1,6 @@
-import useForm from '../hooks/formHooks';
 import {useUserContext} from '../hooks/contextHooks';
+import useForm from '../hooks/formHooks';
 
-// LoginForm.jsx
 const LoginForm = () => {
   const initValues = {
     username: '',
@@ -26,34 +25,51 @@ const LoginForm = () => {
   console.log(inputs);
 
   return (
-    <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="loginuser">Username</label>
-          <TextInput
-            label="username"
+    <div className="flex min-h-screen items-center justify-center bg-sky-900">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md rounded-lg bg-sky-500 p-6 shadow-md"
+      >
+        <h1 className="mb-4 text-center text-2xl font-bold">Login</h1>
+
+        <div className="mb-4">
+          <label htmlFor="loginuser" className="block text-gray-700">
+            Username
+          </label>
+          <input
+            id="loginuser"
             name="username"
             type="text"
-            id="loginuser"
+            className="mt-2 w-full rounded border border-gray-300 p-2"
+            value={inputs.username}
             onChange={handleInputChange}
             autoComplete="username"
           />
         </div>
-        <div>
-          <label htmlFor="loginpassword">Password</label>
-          <TextInput
-            la
+
+        <div className="mb-4">
+          <label htmlFor="loginpassword" className="block text-gray-700">
+            Password
+          </label>
+          <input
+            id="loginpassword"
             name="password"
             type="password"
-            id="loginpassword"
+            className="mt-2 w-full rounded border border-gray-300 p-2"
+            value={inputs.password}
             onChange={handleInputChange}
             autoComplete="current-password"
           />
         </div>
-        <button type="submit">Login</button>
+
+        <button
+          type="submit"
+          className="mt-4 w-full rounded bg-blue-500 py-2 text-white hover:bg-blue-600"
+        >
+          Login
+        </button>
       </form>
-    </>
+    </div>
   );
 };
 
