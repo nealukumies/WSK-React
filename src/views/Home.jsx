@@ -1,12 +1,20 @@
 import MediaRow from '../components/MediaRow';
 import SingleView from '../components/SingleView';
 import {useMedia} from '../hooks/apiHooks';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useUserContext} from '../hooks/contextHooks';
 
 const Home = () => {
-  const {mediaArray} = useMedia();
+  const {getMedia, mediaArray} = useMedia();
   const [selectedItem, setSelectedItem] = useState(null);
   console.log('selected item ', selectedItem);
+  const {handleAutoLogin} = useUserContext();
+  useEffect(() => {
+    handleAutoLogin();
+  }, []);
+  useEffect(() => {
+    getMedia();
+  }, []);
 
   return (
     <>
